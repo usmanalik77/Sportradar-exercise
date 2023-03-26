@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dom Manipulation</title>
+    <style>
+      #container {
+        display: flex;
+        column-gap: 16px;
+      }
+      #box1,
+      #box2 {
+        padding: 10px;
+        border: 1px solid black;
+        text-align: center;
+        font-size: 18px;
+      }
+      #box1 {
+        background-color: blanchedalmond;
+        width: 200px;
+        height: 100px;
+      }
+      #box2 {
+        background-color: aquamarine;
+        width: 100px;
+        height: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div
+        id="box1"
+        oncontextmenu="alert('Cannot right-click!'); return false;"
+      ></div>
+      <div
+        id="box2"
+        onmousedown="if(event.button === 0) {alert('Cannot left-click!'); return false;}"
+      ></div>
+    </div>
+    <script>
+      function updateDimensions() {
+        var width = window.innerWidth;
+        var height = window.innerHeight;
+        document.getElementById("box1").innerText = "Width: " + width;
+        document.getElementById("box2").innerText = "Height: " + height;
+      }
+      updateDimensions();
+      window.addEventListener("resize", updateDimensions);
+    </script>
+  </body>
+</html>
